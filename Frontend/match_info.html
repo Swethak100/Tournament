@@ -33,14 +33,13 @@ document.addEventListener('DOMContentLoaded', function () {
             .then(response => {
                 if (response.ok) {
                     console.log('saved');
-                    // You can handle the response or perform any additional actions here.
                 } else {
-                    // Handle the case where the save operation failed.
+                   
                     console.log('Failed to save matches.');
                 }
             })
             .catch(error => {
-                // Handle any network or other errors.
+              
                 console.error('Error:', error);
             });
 
