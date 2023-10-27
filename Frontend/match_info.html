@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Match Information</title>
+    <link rel="stylesheet" href="match_info.css">
+</head>
+<body>
+    <h1>Match Information</h1>
+    <table id="matchTable">
+        <thead>
+            <tr>
+                <th>Team Name</th>
+                <th>Match Scheduled Date</th>
+            </tr>
+        </thead>
+        <tbody>
+           
+        </tbody>
+    </table>
+    <script>
+document.addEventListener('DOMContentLoaded', function () {
+    const scheduledMatches = JSON.parse(sessionStorage.getItem('scheduledMatches'));
+    console.log(scheduledMatches);
+    fetch('http://localhost:8080/tour/tour', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(scheduledMatches),
+            })
+            .then(response => {
+                if (response.ok) {
+                    console.log('saved');
+                    // You can handle the response or perform any additional actions here.
+                } else {
+                    // Handle the case where the save operation failed.
+                    console.log('Failed to save matches.');
+                }
+            })
+            .catch(error => {
+                // Handle any network or other errors.
+                console.error('Error:', error);
+            });
+
+    const table = document.getElementById('matchTable').getElementsByTagName('tbody')[0];
+
+    if (scheduledMatches) {
+        for (const matchInfo of scheduledMatches) {
+            const row = table.insertRow();
+            const cell1 = row.insertCell(0);
+            const cell2 = row.insertCell(1);
+
+            cell1.innerHTML = matchInfo.teamName; 
+            cell2.innerHTML = matchInfo.scheduledDate; 
+        }
+    }
+    
+});
+    </script>
+</body>
+</html>

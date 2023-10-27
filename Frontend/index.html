@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cricket Tournament Scheduler</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Cricket Tournament Scheduler</h1>
+        <div class="add-team">
+            <input type="text" id="teamNameInput" placeholder="Team Name">
+            <input type="text" id="captainNameInput" placeholder="Captain Name">
+            <button id="addTeamButton">Add Team</button>
+        </div>
+        <br>
+        <div id="teamCards" class="team-cards"></div>
+        <br>
+        <div class="schedule-team">
+            <input type="date" id="matchDate" disabled>
+            <button id="scheduleButton" disabled onclick="schedule()">Schedule</button>
+        </div>
+        <!-- <button id="sbutton2" onclick="displayMatchInfo()">See Match Info</button> -->
+    </div>
+    <script src="schedule.js"></script>
+</body>
+</html>
