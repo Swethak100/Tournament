@@ -24,8 +24,6 @@ System.out.println("ok saved");
     }
     @PostMapping
     public ResponseEntity<String> saveMatches(@RequestBody List<TourModel> matches) {
-        // Process and store the matches in the database or perform any other desired actions.
-        // You can use the 'matches' list to access team names and scheduled dates.
 
         return ResponseEntity.ok("Matches saved successfully");
     }
